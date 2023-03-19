@@ -2,6 +2,8 @@ from django.urls import path
 from base import views
 
 urlpatterns = [
+    path('login/', views.CustomLoginView.as_view(), name = 'login'),
+    path('logout/', views.LogoutView.as_view(next_page = 'login'), name = 'logout'),
     path('', views.taskList.as_view(), name='tasks'),
     path('task/<int:pk>', views.taskDetail.as_view(), name='task'),
     path('createtask/', views.TaskCreate.as_view(), name='createtask'),
